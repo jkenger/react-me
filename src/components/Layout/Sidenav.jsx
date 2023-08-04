@@ -1,20 +1,29 @@
+import { useTheme } from "../context/ThemeContext";
 import Sidebar from "./Sidebar";
 import SidebarList from "./SidebarList";
-function Sidenav() {
+function Sidenav({ path }) {
+  const { dark } = useTheme();
   return (
     <section
       id="nav"
-      className="flex flex-col w-[400px] border border-y-0 border-l-0 border-r-gray-200"
+      className={`hidden sm:flex flex-col w-[400px] border border-y-0 border-l-0 border-r-gray-200 ${dark}`}
     >
       <Sidebar styles="h-16">
-        <p className="">Dashboard</p>
+        <p className="">{path.name}</p>
       </Sidebar>
       <Sidebar>
-        <SidebarList to="/all" title={"Projects"} linkTitle={"All Projects"} />
+        <SidebarList to="all" title={"Projects"} linkTitle={"All Projects"} />
       </Sidebar>
       <Sidebar>
         <SidebarList
-          to="/context-api"
+          to="context-api"
+          title={"Context API Projects"}
+          linkTitle={"Project 1"}
+        />
+      </Sidebar>
+      <Sidebar>
+        <SidebarList
+          to="/"
           title={"Context API Projects"}
           linkTitle={"Project 1"}
         />
@@ -27,9 +36,9 @@ function Sidenav() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="sbui-icon "
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="sbui-icon "
         >
           <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
           <polyline points="16 17 21 12 16 7"></polyline>

@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 .side {
-  @apply w-52 px-6 text-left border border-x-0 border-t-0 border-b-gray-200;
+  @apply w-52 px-6 text-left border border-x-0 border-t-0 border-b-gray-700;
+}
+
+.dark {
+  @apply bg-gray-900 text-white border-gray-700;
+}
+
+.card-dark {
+  @apply bg-gray-900 text-white border-gray-700;
+}
+
+.card-dark svg {
+  fill: white;
 }
