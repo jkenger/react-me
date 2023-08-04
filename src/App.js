@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Main from "./components/Layout/Main";
-import Content from "./components/Layout/Content";
-import SidebarList from "./components/UI/Main/SidebarList";
+import Main from "./components/layout/Main";
+import Projects from "./components/pages/Projects";
 
 function App() {
   return (
@@ -10,13 +9,30 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route
-          path="/projects/"
+          path="projects"
           element={
             <Main>
-              <Content />
+              <Projects />
             </Main>
           }
-        />
+        >
+          <Route
+            path="all"
+            element={
+              <Main>
+                <Projects />
+              </Main>
+            }
+          />
+          <Route
+            path="context-api"
+            element={
+              <Main>
+                <Projects />
+              </Main>
+            }
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

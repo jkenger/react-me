@@ -16,7 +16,14 @@ function Main({ children }) {
         </Sidebar>
         <Sidebar>
           <SidebarList
-            to="/"
+            to="/all"
+            title={"Projects"}
+            linkTitle={"All Projects"}
+          />
+        </Sidebar>
+        <Sidebar>
+          <SidebarList
+            to="/context-api"
             title={"Context API Projects"}
             linkTitle={"Project 1"}
           />

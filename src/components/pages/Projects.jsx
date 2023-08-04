@@ -11,7 +11,7 @@ function Content() {
       >
         <Link to="https://worldwise-ten.vercel.app" target="_blank">
           <div
-            className="card group relative flex justify-between md:flex-col rounded-md 
+            className="card group relative flex flex-col justify-between rounded-md 
         border border-slate-200 bg-white min-w-3xl space-x-2 py-2 px-4 md:py-4 md:px-6 md:space-x-0 md:space-y-4"
           >
             <div className="absolute bg-black -top-3 -right-3 md:-top-4 md:-right-4 p-2 rounded-full hidden group-hover:flex">
@@ -27,7 +27,7 @@ function Content() {
                 stroke-width="2"
                 viewBox="0 0 24 24"
                 width="20"
-                className="text-white w-4 h-4 md:w-6 md:h-6 hover:fade transition-all"
+                className="text-white w-3 h-3 md:w-4 md:h-4 hover:fade transition-all"
               >
                 <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
                 <path d="M15 3h6v6"></path>
@@ -50,12 +50,17 @@ function Content() {
                 </Link>
               </div>
             </div>
-            <div className="hidden md:block text-xs">
+            <div className="text-xs mt-2 md:mt-0">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Accusantium explicabo ducimus, dignissimos autem a assumenda harum
               quia dolore doloremque animi.
             </div>
-            <div className="flex justify-between flex-row-reverse md:flex-row">
+            <div className="flex justify-between md:flex-row">
+              <div className="flex items-center justify-center gap-2  text-sm  flex-wrap md:gap-2">
+                <span className="font-semibold text-md">ReactJS</span>
+                <span className="font-semibold text-md">Context API</span>
+                <span className="font-semibold text-md">Leaftlet</span>
+              </div>
               <div className="flex items-center text-sm space-x-1 hover:scale-110 transition-all">
                 <Link
                   to="https://github.com/jkenger/worldwise"
@@ -77,11 +82,6 @@ function Content() {
                     fill-rule="nonzero"
                   ></path>
                 </svg>
-              </div>
-              <div className="flex items-center justify-center   text-sm  flex-wrap md:space-x-2">
-                <span className="font-semibold text-md">ReactJS</span>
-                <span className="font-semibold text-md">Context API</span>
-                <span className="font-semibold text-md">Leaftlet</span>
               </div>
             </div>
           </div>
