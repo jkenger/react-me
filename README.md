@@ -14,9 +14,11 @@ An in-depth paragraph about your project and overview of use.
 
 ### Installing
 
-## `npm install`
+- Installs the app dependencies.
 
-- Installs the app dependencies.\
+```
+npm i
+```
 
 ### Executing program
 
