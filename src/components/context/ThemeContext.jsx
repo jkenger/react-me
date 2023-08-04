@@ -3,19 +3,21 @@ import { createContext, useContext, useEffect, useState } from "react";
 const ThemeContext = createContext();
 
 function ThemeProvider({ children }) {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() =>
+    JSON.parse(localStorage.getItem("isDark"))
+  );
   const [dark, setDark] = useState("");
   const [cardDark, setCardDark] = useState("");
-
-  // useEffect(() => {
-  //   setDark((dark) => (isDark ? "dark" : ""));
-  // }, [isDark]);
-
+  console.log(isDark);
   function handleIsDark() {
     setIsDark((isDark) => !isDark);
+    localStorage.setItem("isDark", !isDark);
+  }
+
+  useEffect(() => {
     setDark((dark) => (isDark ? "dark" : ""));
     setCardDark((dark) => (isDark ? "card-dark" : ""));
-  }
+  }, [isDark]);
 
   return (
     <ThemeContext.Provider value={{ isDark, dark, cardDark, handleIsDark }}>

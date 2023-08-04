@@ -16,18 +16,34 @@ function Sidenav({ path }) {
       </Sidebar>
       <Sidebar>
         <SidebarList
-          to="context-api"
-          title={"Context API Projects"}
+          to="/"
+          title={"Notable Projects"}
           linkTitle={"Project 1"}
         />
       </Sidebar>
       <Sidebar>
         <SidebarList
-          to="/"
+          to="context-api"
           title={"Context API Projects"}
-          linkTitle={"Project 1"}
+          linkTitle={"Theme Switcher"}
         />
       </Sidebar>
+
+      {/* <img
+        align="center"
+        src="https://github-readme-stats.vercel.app/api?username=jkenger&theme=transparent&show_icons=true&locale=en"
+        alt="jkenger"
+      />
+      <img
+        align="center"
+        src="http://github-readme-streak-stats.herokuapp.com?user=jkenger&theme=transparent"
+        alt="jkenger"
+      />
+      <img
+        align="center"
+        src="https://github-readme-stats.vercel.app/api/top-langs/?username=jkenger&layout=compact&theme=transparent"
+        alt="jkenger"
+      /> */}
       <Sidebar>
         <svg
           xmlns="http://www.w3.org/2000/svg"

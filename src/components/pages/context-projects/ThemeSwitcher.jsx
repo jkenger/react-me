@@ -6,7 +6,7 @@ function ThemeSwitcher() {
     <Switch
       id="custom-switch-component"
       ripple={false}
-      checked={!isDark}
+      checked={isDark}
       onChange={() => {
         handleIsDark();
       }}
