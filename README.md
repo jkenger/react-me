@@ -12,9 +12,11 @@ An in-depth paragraph about your project and overview of use.
 
 -tailwind css
 
-### Installing
+### Installing the app dependencies
 
-- Installs the app dependencies.
+- @material-tailwind/react ^2.0.8.
+- react n react dom ^18.2.0
+- react-router-dom ^6.14.2
 
 ```
 npm i

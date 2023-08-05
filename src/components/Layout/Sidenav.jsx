@@ -9,28 +9,31 @@ function Sidenav({ path }) {
       className={`hidden sm:flex flex-col w-[400px] border border-y-0 border-l-0 border-r-gray-200 ${dark}`}
     >
       <Sidebar styles="h-16">
-        <p className="">{path.headTitle}</p>
+        <p className="">{path.sideNavTitle}</p>
       </Sidebar>
       <Sidebar>
         <SidebarList
           headTitle={"Projects"}
           links={[{ title: "All Projects", to: "/" }]}
+          key={"Projects"}
         />
       </Sidebar>
       <Sidebar>
         <SidebarList
           headTitle={"Notable Projects"}
+          key={"asdasdsad"}
           links={[{ title: "Project 1", to: "notable/project-1" }]}
         />
       </Sidebar>
       <Sidebar>
         <SidebarList
           headTitle={"Context API Projects"}
+          key={"ASDSDX"}
           links={[
             { title: "Theme Switcher", to: "context-api/theme-switcher" },
             {
               title: "Language Translator",
-              to: "/context-api/language-translator",
+              to: "context-api/language-translator",
             },
           ]}
         />

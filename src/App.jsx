@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Main from "./components/layout/Main";
 import ProjectsPage from "./components/pages/ProjectsPage";
 import ContextPage from "./components/pages/ContextPage";
-import { ThemeProvider } from "./components/context/ThemeContext";
+import { ThemeProvider, useTheme } from "./components/context/ThemeContext";
 import ThemeSwitcher from "./components/pages/ContextPages/ThemeSwitcher";
 import LanguageTranslator from "./components/pages/ContextPages/LanguageTranslator";
 
@@ -20,11 +20,12 @@ function App() {
             <Route path="context-api" element={<ContextPage />}>
               <Route path="theme-switcher" element={<ThemeSwitcher />} />
               <Route
-                path="translate-language"
+                path="language-translator"
                 element={<LanguageTranslator />}
               />
             </Route>
           </Route>
+          <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

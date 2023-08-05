@@ -4,7 +4,7 @@ import { toCapital } from "../services/capitalize";
 function usePath() {
   // Format Paths to Capitalize Each Word and Remove Symbols
   // Note: This Function Only Removes "-"
-  function formatPath(pathname) {
+  function fetchTopNavTitle(pathname) {
     // get the last path
     const pname = pathname
       .slice(pathname.lastIndexOf("/"), pathname.length)
@@ -17,7 +17,7 @@ function usePath() {
     return subPath;
   }
 
-  function fetchHeadTitle(pathname) {
+  function fetchSideNavTitle(pathname) {
     return pathname === "/projects/all"
       ? "Dashboard"
       : pathname.includes("context-api") && "Context API Projects";
@@ -26,18 +26,18 @@ function usePath() {
   const { pathname } = useLocation();
 
   // Fetch Side Navigation Path Name
-  const headTitle = fetchHeadTitle(pathname);
+  const sideNavTitle = fetchSideNavTitle(pathname);
 
   // Fetch Top Navigation Path Name
-  const subPath = formatPath(pathname);
+  const topNavTitle = fetchTopNavTitle(pathname);
 
   // Return Nothing
-  if (!pathname || !headTitle || !subPath) return;
+  if (!pathname || !topNavTitle || !sideNavTitle) return;
 
   const path = {
     pathName: pathname,
-    headTitle: headTitle,
-    subName: subPath,
+    sideNavTitle: sideNavTitle,
+    topNavTitle: topNavTitle,
   };
   return path;
 }

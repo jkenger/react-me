@@ -1,11 +1,12 @@
 import { Switch } from "@material-tailwind/react";
 import { useTheme } from "../../context/ThemeContext";
 import ProjectList from "../../UI/ProjectList";
+import React from "react";
 
 function ThemeSwitcher() {
   const { isDark, handleIsDark } = useTheme();
   return (
-    <>
+    <React.Fragment>
       <div className="flex items-center space-x-2 mb-4 text-sm">
         <Switch
           id="custom-switch-component"
@@ -25,7 +26,7 @@ function ThemeSwitcher() {
         {"<-"} Use this to toggle dark mode!
       </div>
       <ProjectList />
-    </>
+    </React.Fragment>
   );
 }
 

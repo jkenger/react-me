@@ -7,8 +7,8 @@ function SidebarList({ headTitle, links = [{ title: "", to: "/" }] }) {
       <p className="text-xs text-gray-400">{headTitle}</p>
 
       {map &&
-        links.map((link) => (
-          <div className="flex flex-col">
+        links.map((link, index) => (
+          <div className="flex flex-col" key={index}>
             <NavLink
               to={`${link.to}`}
               className="flex hover:space-x-1 text-xs pt-2 group"
@@ -23,6 +23,7 @@ function SidebarList({ headTitle, links = [{ title: "", to: "/" }] }) {
 
       {!map && (
         <NavLink
+          key={links[0].title}
           to={`${links[0].to}`}
           className="flex hover:space-x-1 text-xs pt-1 group"
         >
