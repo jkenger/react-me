@@ -4,7 +4,7 @@ function usePath() {
   function addPath(pathname) {
     return pathname === "/projects/all"
       ? "Dashboard"
-      : pathname === "/projects/context-api" && "Context API Projects";
+      : pathname.includes("context-api") && "Context API Projects";
   }
   const { pathname } = useLocation();
   const pathName = addPath(pathname);

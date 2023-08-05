@@ -1,6 +1,6 @@
 import { useTheme } from "./../context/ThemeContext";
 import { usePath } from "../hooks/usePath.jsx";
-import Sidenav from "./Sidenav";
+import SideNav from "./SideNav";
 import TopNav from "./TopNav";
 import { Outlet } from "react-router-dom";
 
@@ -10,7 +10,7 @@ function Main({ children }) {
   return (
     <div className={`flex w-full h-screen border-collapse bg-zinc-50 ${dark} `}>
       {/* SIDEBAR */}
-      <Sidenav path={path} />
+      <SideNav path={path} />
       {/* NAV AND MAIN CONTENT */}
       <div className="flex flex-col w-full ">
         <TopNav path={path} />

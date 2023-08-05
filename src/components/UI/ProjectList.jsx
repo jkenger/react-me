@@ -2,7 +2,7 @@ import { Button } from "@material-tailwind/react";
 import { Link, Navigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 
-function ContentList() {
+function ProjectList() {
   const { cardDark } = useTheme();
   return (
     <Link to="https://worldwise-ten.vercel.app" target="_blank">
@@ -81,4 +81,4 @@ function ContentList() {
   );
 }
 
-export default ContentList;
+export default ProjectList;

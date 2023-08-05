@@ -1,6 +1,6 @@
 import { useTheme } from "../context/ThemeContext";
-import Sidebar from "./Sidebar";
-import SidebarList from "./SidebarList";
+import Sidebar from "../UI/Sidebar";
+import SidebarList from "../UI/SidebarList";
 function Sidenav({ path }) {
   const { dark } = useTheme();
   return (
@@ -12,20 +12,27 @@ function Sidenav({ path }) {
         <p className="">{path.name}</p>
       </Sidebar>
       <Sidebar>
-        <SidebarList to="all" title={"Projects"} linkTitle={"All Projects"} />
-      </Sidebar>
-      <Sidebar>
         <SidebarList
-          to="/"
-          title={"Notable Projects"}
-          linkTitle={"Project 1"}
+          headTitle={"Projects"}
+          links={[{ title: "All Projects", to: "/" }]}
         />
       </Sidebar>
       <Sidebar>
         <SidebarList
-          to="context-api"
-          title={"Context API Projects"}
-          linkTitle={"Theme Switcher"}
+          headTitle={"Notable Projects"}
+          links={[{ title: "Project 1", to: "/" }]}
+        />
+      </Sidebar>
+      <Sidebar>
+        <SidebarList
+          headTitle={"Context API Projects"}
+          links={[
+            { title: "Theme Switcher", to: "context-api/theme-switcher" },
+            {
+              title: "Language Translator",
+              to: "/context-api/language-translator",
+            },
+          ]}
         />
       </Sidebar>
 
