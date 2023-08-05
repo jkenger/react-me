@@ -1,5 +1,5 @@
 import { useTheme } from "./../context/ThemeContext";
-import { usePath } from "../hooks/usePath.jsx";
+import { usePath } from "../hooks/usePath";
 import SideNav from "./SideNav";
 import TopNav from "./TopNav";
 import { Outlet } from "react-router-dom";
