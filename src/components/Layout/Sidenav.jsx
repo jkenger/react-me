@@ -9,7 +9,7 @@ function Sidenav({ path }) {
       className={`hidden sm:flex flex-col w-[400px] border border-y-0 border-l-0 border-r-gray-200 ${dark}`}
     >
       <Sidebar styles="h-16">
-        <p className="">{path.name}</p>
+        <p className="">{path.headTitle}</p>
       </Sidebar>
       <Sidebar>
         <SidebarList
@@ -20,7 +20,7 @@ function Sidenav({ path }) {
       <Sidebar>
         <SidebarList
           headTitle={"Notable Projects"}
-          links={[{ title: "Project 1", to: "/" }]}
+          links={[{ title: "Project 1", to: "notable/project-1" }]}
         />
       </Sidebar>
       <Sidebar>

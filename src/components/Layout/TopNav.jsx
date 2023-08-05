@@ -11,7 +11,7 @@ function TopNav({ path }) {
           {/* direct to dashboard(all projects) */}
           <span>React Me</span>
           <span className="text-gray-200 mx-4 font-light">/</span>
-          <span className="text-gray-500">{path.name}</span>
+          <span className="text-gray-500">{path.subName}</span>
         </div>
 
         <div id="cta" className="flex items-center text-xs tracking-tight">
