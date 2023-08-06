@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import ProjectList from "../UI/ProjectList";
 import { useTheme } from "../context/ThemeContext";
+import ProjectCard from "../UI/ProjectCard";
 
 function Content() {
   const { dark } = useTheme();
@@ -12,11 +12,11 @@ function Content() {
         sm:grid-cols-1 md:grid-cols-1 
       lg:grid-cols-2 xl:grid-cols-3`}
       >
-        <ProjectList />
-        <ProjectList />
-        <ProjectList />
-        <ProjectList />
-        <ProjectList />
+        <ProjectCard />
+        <ProjectCard />
+        <ProjectCard />
+        <ProjectCard />
+        <ProjectCard />
       </div>
     </div>
   );
