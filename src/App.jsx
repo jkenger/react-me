@@ -6,6 +6,7 @@ import ThemeSwitcher from "./components/pages/ContextPages/ThemeSwitcher";
 import LanguageTranslator from "./components/pages/ContextPages/LanguageTranslator";
 import AllProjects from "./components/pages/ProjectPages/AllProjects";
 import ContentPage from "./components/pages/ContentPage";
+import { TranslatorProvider } from "./components/context/TranslatorContext";
 
 function App() {
   return (
@@ -24,7 +25,11 @@ function App() {
               <Route path="theme-switcher" element={<ThemeSwitcher />} />
               <Route
                 path="language-translator"
-                element={<LanguageTranslator />}
+                element={
+                  <TranslatorProvider>
+                    <LanguageTranslator />
+                  </TranslatorProvider>
+                }
               />
             </Route>
           </Route>

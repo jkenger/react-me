@@ -1,4 +1,4 @@
-export default function Dropdown({ className, langs, selected, onSelect }) {
+export default function Dropdown({ className, items, selected, onSelect }) {
   return (
     <div className={`${className}`}>
       <select
@@ -7,7 +7,7 @@ export default function Dropdown({ className, langs, selected, onSelect }) {
         onChange={onSelect}
         label="Select Version"
       >
-        {langs.map((lang) => (
+        {items.map((lang) => (
           <option key={lang} value={lang}>
             {lang}
           </option>

@@ -8,6 +8,7 @@ function ThemeSwitcher() {
   return (
     <React.Fragment>
       <div className="flex items-center space-x-2 mb-4 text-sm">
+        
         <Switch
           id="custom-switch-component"
           ripple={false}
