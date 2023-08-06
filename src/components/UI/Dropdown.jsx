@@ -4,9 +4,7 @@ export default function Dropdown({ className, langs, selected, onSelect }) {
       <select
         className="border border-gray-200 rounded-md p-2 w-full"
         value={selected}
-        onChange={(e) => {
-          onSelect(e.target.value);
-        }}
+        onChange={onSelect}
         label="Select Version"
       >
         {langs.map((lang) => (

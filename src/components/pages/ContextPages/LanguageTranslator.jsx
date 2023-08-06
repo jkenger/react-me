@@ -13,28 +13,46 @@ function LanguageTranslator() {
 
   const [fromSelectedLang, setFromSelectedLang] = useState("");
   const [toSelectedLang, setToSelectedLang] = useState("");
+  const [pair, setPair] = useState(["eng", "eng"]);
 
-  function handleFromSelected(selected) {
-    setFromSelectedLang((fromSelectedLang) => selected);
+  function handleFromSelected(e) {
+    setFromSelectedLang((fromSelectedLang) => {
+      return e.target.value;
+    });
+    codes.find(
+      (value) =>
+        value[1] === e.target.value &&
+        setPair((pair) => {
+          return pair.length <= 2 ? [value[0], pair[1]] : [value[0], pair[1]];
+        })
+    );
   }
-  function handletoSelected(selected) {
-    setToSelectedLang((toSelectedLang) => selected);
+  function handletoSelected(e) {
+    setToSelectedLang((toSelectedLang) => e.target.value);
+    codes.find(
+      (value) =>
+        value[1] === e.target.value &&
+        setPair((pair) => {
+          return pair.length <= 2 ? [pair[0], value[0]] : [value[0], pair[1]];
+        })
+    );
   }
 
   //   Fetch Translated Language
 
   useEffect(() => {
+    console.log(pair[0], pair[1]);
     const controller = new AbortController();
 
     async function translate() {
-      const from = "eng";
-      const to = "fil";
       const translate = langQuery !== "";
+      const from = pair[0];
+      const to = pair[1];
       try {
         if (translate) {
           setIsLoading(true);
           const res = await fetch(
-            `https://api.mymemory.translated.net/get?q=${langQuery}!&langpair=${from}|${to}`,
+            `https://api.mymemory.translated.net/get?q=${langQuery}&langpair=${from}|${to}`,
             {
               signal: controller.signal,
             }
@@ -60,7 +78,7 @@ function LanguageTranslator() {
     return function () {
       controller.abort();
     };
-  }, [langQuery]);
+  }, [langQuery, pair]);
 
   //   Fetch Codes and Languages
   useEffect(
@@ -142,6 +160,11 @@ function LanguageTranslator() {
           </textarea>
         </Card>
       </Card>
+      <p className="text-xs text-red-700">
+        Note: the translation might be inaccurate and non-functional to some
+        language/words as it varies from the api used for this development.
+      </p>
+      <p className="text-xs"> Made with 💗 by Ken Gervacio</p>
     </div>
   );
 }
