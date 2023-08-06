@@ -8,7 +8,7 @@ function Main({ children }) {
   const path = usePath();
   const { dark } = useTheme();
   return (
-    <div className={`flex w-full h-screen border-collapse bg-zinc-50 ${dark} `}>
+    <div className={`flex w-full h-screen border-collapse ${dark} `}>
       {/* SIDEBAR */}
       <SideNav path={path} />
       {/* NAV AND MAIN CONTENT */}

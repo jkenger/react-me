@@ -20,8 +20,8 @@ function LanguageTranslator() {
   return (
     <div className="flex flex-col space-y-2">
       <ContentHeader title="Language Translator" stacks={initialStacks} />
-      <Card className="flex flex-col md:flex-row w-full gap-2 justify-between ">
-        <Card className="w-full">
+      <div className="flex flex-col md:flex-row w-full gap-2 justify-between ">
+        <Card className="w-full flex flex-col space-y-2 bg-gray-100">
           <Dropdown
             items={items}
             className="w-full"
@@ -33,7 +33,7 @@ function LanguageTranslator() {
             onChange={(e) =>
               setLangQuery((langQuery) => (langQuery = e.target.value))
             }
-            className="w-full text-4xl px-2 py-4 border-0 outline-none"
+            className="bg-white w-full text-4xl px-2 py-4 border-0 outline-none"
           ></textarea>
         </Card>
         <Card className="w-full flex flex-col space-y-2 bg-gray-100">
@@ -57,7 +57,7 @@ function LanguageTranslator() {
             Translate
           </textarea>
         </Card>
-      </Card>
+      </div>
       <ContentFooter />
     </div>
   );
