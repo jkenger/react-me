@@ -49,7 +49,6 @@ function LanguageTranslator() {
           }
           setTranslatedText(translatedText.responseData.translatedText);
           setIsLoading(false);
-          console.log(translatedText);
         }
       } catch (e) {
         console.log(e.name);
