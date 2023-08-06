@@ -1,4 +1,3 @@
-import { Navigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 
 function Card({ className = "", children, onClick = null }) {

@@ -1,8 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import Main from "./components/layout/Main";
-import ContextPage from "./components/pages/ContextPage";
-import { ThemeProvider, useTheme } from "./components/context/ThemeContext";
+import { ThemeProvider } from "./components/context/ThemeContext";
 import ThemeSwitcher from "./components/pages/ContextPages/ThemeSwitcher";
 import LanguageTranslator from "./components/pages/ContextPages/LanguageTranslator";
 import AllProjects from "./components/pages/ProjectPages/AllProjects";

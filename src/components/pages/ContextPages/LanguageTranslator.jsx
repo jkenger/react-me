@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Card from "../../UI/Card";
 import Dropdown from "../../UI/Dropdown";
 
 function LanguageTranslator() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [langs, setLangs] = useState([]);
   const [codes, setCodes] = useState([]);
+
   const [langQuery, setLangQuery] = useState("");
+  const [translatedText, setTranslatedText] = useState(null);
+
   const [fromSelectedLang, setFromSelectedLang] = useState("");
   const [toSelectedLang, setToSelectedLang] = useState("");
 
@@ -16,6 +21,49 @@ function LanguageTranslator() {
     setToSelectedLang((toSelectedLang) => selected);
   }
 
+  //   Fetch Translated Language
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function translate() {
+      const from = "eng";
+      const to = "fil";
+      const translate = langQuery !== "";
+      try {
+        if (translate) {
+          setIsLoading(true);
+          const res = await fetch(
+            `https://api.mymemory.translated.net/get?q=${langQuery}!&langpair=${from}|${to}`,
+            {
+              signal: controller.signal,
+            }
+          );
+          if (!res.ok)
+            throw new Error("Something went wrong with translating language");
+
+          const translatedText = await res.json();
+
+          if (translatedText.Response === "False") {
+            throw new Error("Translation not found");
+          }
+          setTranslatedText(translatedText.responseData.translatedText);
+          setIsLoading(false);
+          console.log(translatedText);
+        }
+      } catch (e) {
+        console.log(e.name);
+      }
+    }
+    translate();
+
+    // Abort fetching from api when rerendering
+    return function () {
+      controller.abort();
+    };
+  }, [langQuery]);
+
+  //   Fetch Codes and Languages
   useEffect(
     function () {
       async function fetchLanguages() {
@@ -88,9 +136,11 @@ function LanguageTranslator() {
           />
           <textarea
             disabled
-            placeholder="Translation"
+            value={!isLoading && translatedText ? translatedText : ""}
             className="w-full text-4xl px-2 py-4 border-0 outline-none bg-gray-100"
-          ></textarea>
+          >
+            Translate
+          </textarea>
         </Card>
       </Card>
     </div>

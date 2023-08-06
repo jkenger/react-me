@@ -1,5 +1,3 @@
-import { Select, Option } from "@material-tailwind/react";
-import { useEffect, useMemo, useState } from "react";
 export default function Dropdown({ className, langs, selected, onSelect }) {
   return (
     <div className={`${className}`}>
