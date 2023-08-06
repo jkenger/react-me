@@ -4,6 +4,8 @@ import Dropdown from "../../UI/Dropdown";
 
 function LanguageTranslator() {
   const [langs, setLangs] = useState([]);
+  const [codes, setCodes] = useState([]);
+  const [langQuery, setLangQuery] = useState("");
   const [fromSelectedLang, setFromSelectedLang] = useState("");
   const [toSelectedLang, setToSelectedLang] = useState("");
 
@@ -23,8 +25,16 @@ function LanguageTranslator() {
           );
           const data = await res.json();
           const currLang = [];
+          const fullLangs = [];
 
-          // map values
+          //   map codes
+          data.map((languages) =>
+            Object.entries(languages.languages).map((lang) => {
+              fullLangs.push(lang);
+            })
+          );
+
+          // map languages
           data.map((languages) =>
             Object.values(languages.languages).length > 1
               ? Object.values(languages.languages).map((lang) =>
@@ -38,17 +48,21 @@ function LanguageTranslator() {
             return currLang.indexOf(item) === pos;
           });
           setLangs((langs) => filteredLanguages);
+          setCodes((codes) => fullLangs);
+          //   setLangs((langs) => []);
         } catch (e) {
           throw new Error("Failted Fetching");
         }
       }
       fetchLanguages();
     },
-    [langs.length]
+    [langs.length, codes.length]
   );
+
   return (
     <div className="flex-flex-col space-y-2">
       <h1 className="text-lg">Language Translate</h1>
+      {langQuery}
       <Card className="flex flex-col md:flex-row w-full gap-2 justify-between ">
         <Card className="w-full">
           <Dropdown
@@ -59,6 +73,9 @@ function LanguageTranslator() {
           />
           <textarea
             placeholder="Enter Text"
+            onChange={(e) =>
+              setLangQuery((langQuery) => (langQuery = e.target.value))
+            }
             className="w-full text-4xl px-2 py-4 border-0 outline-none"
           ></textarea>
         </Card>
@@ -70,6 +87,7 @@ function LanguageTranslator() {
             onSelect={handletoSelected}
           />
           <textarea
+            disabled
             placeholder="Translation"
             className="w-full text-4xl px-2 py-4 border-0 outline-none bg-gray-100"
           ></textarea>

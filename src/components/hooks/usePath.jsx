@@ -18,7 +18,7 @@ function usePath() {
   }
 
   function fetchSideNavTitle(pathname) {
-    return pathname === "/projects/all"
+    return pathname === "/space/projects/all"
       ? "Dashboard"
       : pathname.includes("context-api") && "Context API Projects";
   }
