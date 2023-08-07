@@ -21,7 +21,7 @@ function LanguageTranslator({ initialStacks }) {
   } = useTranslator();
 
   return (
-    <div className="flex flex-col space-y-2">
+    <div className="flex flex-col">
       <ContentHeader title="🔠 Language Translator" stacks={initialStacks} />
       <div className="flex flex-col md:flex-row w-full gap-2 justify-between ">
         <Card className="w-full flex flex-col space-y-2 bg-gray-100">
