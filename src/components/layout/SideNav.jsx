@@ -2,11 +2,11 @@ import { useTheme } from "../context/ThemeContext";
 import Sidebar from "../UI/Sidebar";
 import SidebarList from "../UI/SidebarList";
 function Sidenav({ path }) {
-  const { dark } = useTheme();
+  const { cardDark } = useTheme();
   return (
     <section
       id="nav"
-      className={`hidden sm:flex flex-col w-[400px] border border-y-0 border-l-0 border-r-gray-200 ${dark}`}
+      className={`hidden sm:flex flex-col w-[400px] border border-y-0 border-l-0 border-r-gray-200 ${cardDark}`}
     >
       <Sidebar styles="h-16">
         <p className="">{path.sideNavTitle}</p>

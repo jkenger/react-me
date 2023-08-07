@@ -6,7 +6,7 @@ function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(() =>
     JSON.parse(localStorage.getItem("isDark"))
   );
-  const [dark, setDark] = useState("");
+  const [secondaryDark, setSecondaryDark] = useState("");
   const [cardDark, setCardDark] = useState("");
   console.log(isDark);
   function handleIsDark() {
@@ -15,12 +15,14 @@ function ThemeProvider({ children }) {
   }
 
   useEffect(() => {
-    setDark((dark) => (isDark ? "dark" : ""));
-    setCardDark((dark) => (isDark ? "card-dark" : ""));
+    setSecondaryDark((secondaryDark) => (isDark ? "dark" : ""));
+    setCardDark((cardDark) => (isDark ? "card-dark" : ""));
   }, [isDark]);
 
   return (
-    <ThemeContext.Provider value={{ isDark, dark, cardDark, handleIsDark }}>
+    <ThemeContext.Provider
+      value={{ isDark, secondaryDark, cardDark, handleIsDark }}
+    >
       {children}
     </ThemeContext.Provider>
   );

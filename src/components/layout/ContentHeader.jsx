@@ -1,10 +1,10 @@
+import Badge from "../UI/Badge";
+
 function ContentHeader({ title, stacks = [] }) {
   const techStacks = stacks.length
     ? stacks.map((stack) => (
         <>
-          <span className="flex justify-center items-center bg-gray-100 text-xs py-1 px-2 rounded-md">
-            {stack}
-          </span>
+          <Badge stack={stack} />
         </>
       ))
     : "";

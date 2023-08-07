@@ -1,10 +1,13 @@
 import Card from "../../UI/Card";
 import Dropdown from "../../UI/Dropdown";
+import TextArea from "../../UI/TextArea";
+import { useTheme } from "../../context/ThemeContext";
 import { useTranslator } from "../../context/TranslatorContext";
 import ContentFooter from "../../layout/ContentFooter";
 import ContentHeader from "../../layout/ContentHeader";
 
 function LanguageTranslator() {
+  const { cardDark, secondaryDark } = useTheme();
   const {
     langs: items,
     isLoading,
@@ -24,26 +27,27 @@ function LanguageTranslator() {
         <Card className="w-full flex flex-col space-y-2 bg-gray-100">
           <Dropdown
             items={items}
-            className="w-full"
+            className={`w-full ${cardDark}`}
             selected={fromSelectedLang}
             onSelect={handleFromSelected}
           />
-          <textarea
-            placeholder="Enter Text"
+          <TextArea
+            value={langQuery}
+            dark={cardDark}
+            placeholder="Text to Translate"
             onChange={(e) =>
               setLangQuery((langQuery) => (langQuery = e.target.value))
             }
-            className="bg-white w-full text-4xl px-2 py-4 border-0 outline-none"
-          ></textarea>
+          />
         </Card>
         <Card className="w-full flex flex-col space-y-2 bg-gray-100">
           <Dropdown
             items={items}
-            className="w-full"
+            className={`w-full ${cardDark}`}
             selected={toSelectedLang}
             onSelect={handleToSelected}
           />
-          <textarea
+          <TextArea
             disabled
             value={
               !isLoading && translatedText
@@ -52,10 +56,8 @@ function LanguageTranslator() {
                 ? "Translating..."
                 : ""
             }
-            className="w-full text-4xl px-2 py-4 border-0 outline-none bg-gray-100"
-          >
-            Translate
-          </textarea>
+            dark={cardDark}
+          />
         </Card>
       </div>
       <ContentFooter />

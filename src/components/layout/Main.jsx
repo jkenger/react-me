@@ -6,9 +6,9 @@ import { Outlet } from "react-router-dom";
 
 function Main({ children }) {
   const path = usePath();
-  const { dark } = useTheme();
+  const { cardDark } = useTheme();
   return (
-    <div className={`flex w-full h-screen border-collapse ${dark} `}>
+    <div className={`flex w-full h-screen border-collapse ${cardDark}`}>
       {/* SIDEBAR */}
       <SideNav path={path} />
       {/* NAV AND MAIN CONTENT */}
