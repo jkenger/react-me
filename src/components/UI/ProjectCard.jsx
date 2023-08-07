@@ -3,7 +3,7 @@ import Card from "./Card";
 
 function ProjectCard() {
   return (
-    <Card className="hover:cursor-pointer hover:border-gray-600 hover:scale-120 transition-colors group relative flex flex-col justify-between  space-x-2 gap-2 md:space-x-0 ">
+    <Card className="hover:cursor-pointer hover:border-gray-600 hover:scale-120 group relative flex flex-col justify-between  space-x-2 gap-2 md:space-x-0 ">
       <Link to="https://worldwise-ten.vercel.app/">
         <div className=" absolute bg-black -top-3 -right-3 md:-top-4 md:-right-4 p-2 rounded-full hidden group-hover:flex">
           <svg

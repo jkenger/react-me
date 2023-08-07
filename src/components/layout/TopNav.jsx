@@ -9,7 +9,7 @@ function TopNav({ path }) {
       >
         <div id="path" className="flex items-center text-xs tracking-tight">
           {/* direct to dashboard(all projects) */}
-          <span>React Me</span>
+          <span>👹 React Me</span>
           <span className="text-gray-200 mx-4 font-light">/</span>
           <span className="text-gray-500">{path.topNavTitle}</span>
         </div>
@@ -20,22 +20,7 @@ function TopNav({ path }) {
           space-x-1 text-xs px-3 py-2 border 
           border-gray-200 shadow-sm ${cardDark}`}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="sbui-icon text-scale-900"
-            >
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-              <line x1="12" y1="17" x2="12.01" y2="17"></line>
-            </svg>
+            <span className="text-xs">🆘</span>
             <label htmlFor="" className="">
               Help
             </label>

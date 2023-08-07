@@ -9,7 +9,7 @@ function Sidenav({ path }) {
       className={`hidden sm:flex flex-col w-[400px] border border-y-0 border-l-0 border-r-gray-200 ${cardDark}`}
     >
       <Sidebar styles="h-16">
-        <p className="">{path.sideNavTitle}</p>
+        <p className="">⚛️ {path.sideNavTitle}</p>
       </Sidebar>
       <Sidebar>
         <SidebarList

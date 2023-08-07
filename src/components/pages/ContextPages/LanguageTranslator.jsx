@@ -6,7 +6,7 @@ import { useTranslator } from "../../context/TranslatorContext";
 import ContentFooter from "../../layout/ContentFooter";
 import ContentHeader from "../../layout/ContentHeader";
 
-function LanguageTranslator() {
+function LanguageTranslator({ initialStacks }) {
   const { cardDark, secondaryDark } = useTheme();
   const {
     langs: items,
@@ -19,10 +19,10 @@ function LanguageTranslator() {
     handleToSelected,
     langQuery,
   } = useTranslator();
-  const initialStacks = ["React JS", "Context API", "Tailwind CSS"];
+
   return (
     <div className="flex flex-col space-y-2">
-      <ContentHeader title="Language Translator" stacks={initialStacks} />
+      <ContentHeader title="🔠 Language Translator" stacks={initialStacks} />
       <div className="flex flex-col md:flex-row w-full gap-2 justify-between ">
         <Card className="w-full flex flex-col space-y-2 bg-gray-100">
           <Dropdown

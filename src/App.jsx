@@ -9,6 +9,7 @@ import ContentPage from "./components/pages/ContentPage";
 import { TranslatorProvider } from "./components/context/TranslatorContext";
 
 function App() {
+  const initialStacks = ["React JS", "Context API", "Tailwind CSS"];
   return (
     <ThemeProvider>
       <BrowserRouter>
@@ -22,12 +23,15 @@ function App() {
               <Route />
             </Route>
             <Route path="context-api" element={<ContentPage />}>
-              <Route path="theme-switcher" element={<ThemeSwitcher />} />
+              <Route
+                path="theme-switcher"
+                element={<ThemeSwitcher initialStacks={initialStacks} />}
+              />
               <Route
                 path="language-translator"
                 element={
                   <TranslatorProvider>
-                    <LanguageTranslator />
+                    <LanguageTranslator initialStacks={initialStacks} />
                   </TranslatorProvider>
                 }
               />

@@ -2,13 +2,16 @@ import { Switch } from "@material-tailwind/react";
 import { useTheme } from "../../context/ThemeContext";
 import React from "react";
 import ProjectCard from "../../UI/ProjectCard";
+import ContentHeader from "../../layout/ContentHeader";
+import Card from "../../UI/Card";
+import ContentFooter from "../../layout/ContentFooter";
 
-function ThemeSwitcher() {
+function ThemeSwitcher({ initialStacks }) {
   const { isDark, handleIsDark } = useTheme();
   return (
     <React.Fragment>
-      <div className="flex items-center space-x-2 mb-4 text-sm">
-        
+      <ContentHeader title="🔂 Theme Switcher" stacks={initialStacks} />
+      <Card className="flex items-center space-x-2 mb-4 text-sm">
         <Switch
           id="custom-switch-component"
           ripple={false}
@@ -25,8 +28,9 @@ function ThemeSwitcher() {
           }}
         />
         {"<-"} Use this to toggle dark mode!
-      </div>
+      </Card>
       <ProjectCard />
+      <ContentFooter />
     </React.Fragment>
   );
 }

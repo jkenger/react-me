@@ -10,7 +10,7 @@ function ContentHeader({ title, stacks = [] }) {
     : "";
 
   return (
-    <div className="flex space-x-2">
+    <div className="flex space-x-2 mb-4">
       <h1 className="text-lg">{title}</h1>
       {techStacks}
     </div>
