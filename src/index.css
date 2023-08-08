@@ -24,3 +24,13 @@
 .active {
   @apply space-x-1;
 }
+
+input,
+select {
+  @apply border border-gray-200 rounded-md p-2 w-full bg-gray-50;
+}
+
+
+.btn-submit {
+  @apply bg-green-700;
+}
