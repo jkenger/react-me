@@ -5,11 +5,11 @@ function SidebarList({ headTitle, links = [{ title: "", to: "/" }] }) {
   return (
     <div>
       <p className="text-xs text-gray-400">{headTitle}</p>
-      <div className="flex flex-col">
-        {map &&
-          links.map((link, index) => (
+
+      {map &&
+        links.map((link, index) => (
+          <div className="flex flex-col" key={index}>
             <NavLink
-              key={index}
               to={`${link.to}`}
               className="flex hover:space-x-1 text-xs pt-2 group"
             >
@@ -18,10 +18,13 @@ function SidebarList({ headTitle, links = [{ title: "", to: "/" }] }) {
               </span>
               <p className="transition-all">{link.title}</p>
             </NavLink>
-          ))}
+          </div>
+        ))}
 
-        {!map && (
+      {!map && (
+        <div className="flex flex-col">
           <NavLink
+            key={links[0].title}
             to={`${links[0].to}`}
             className="flex hover:space-x-1 text-xs pt-1 group"
           >
@@ -30,8 +33,8 @@ function SidebarList({ headTitle, links = [{ title: "", to: "/" }] }) {
             </span>{" "}
             <p className="transition-all">{links[0].title}</p>
           </NavLink>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

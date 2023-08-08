@@ -39,7 +39,6 @@ function TranslatorProvider({ children }) {
   //   Fetch Translated Language
 
   useEffect(() => {
-    console.log(pair[0], pair[1]);
     const controller = new AbortController();
 
     async function translate() {

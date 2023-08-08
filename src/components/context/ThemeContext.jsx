@@ -8,7 +8,6 @@ function ThemeProvider({ children }) {
   );
   const [secondaryDark, setSecondaryDark] = useState("");
   const [cardDark, setCardDark] = useState("");
-  console.log(isDark);
   function handleIsDark() {
     setIsDark((isDark) => !isDark);
     localStorage.setItem("isDark", !isDark);

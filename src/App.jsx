@@ -56,7 +56,11 @@ function App() {
             <Route path="context-api" element={<ContentPage />}>
               {contextApi &&
                 contextApi.map((project) => (
-                  <Route path={project.link} element={project.element} />
+                  <Route
+                    path={project.link}
+                    element={project.element}
+                    key={project.link}
+                  />
                 ))}
             </Route>
           </Route>

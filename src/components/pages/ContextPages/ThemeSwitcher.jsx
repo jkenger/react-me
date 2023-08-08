@@ -8,7 +8,6 @@ import ContentFooter from "../../layout/ContentFooter";
 
 function ThemeSwitcher({ title, stacks }) {
   const { isDark, handleIsDark } = useTheme();
-  console.log(title, stacks);
   return (
     <React.Fragment>
       <ContentHeader title={title} stacks={stacks} />

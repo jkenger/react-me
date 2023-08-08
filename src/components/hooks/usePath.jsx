@@ -25,7 +25,6 @@ function usePath() {
   }
 
   const { pathname } = useLocation();
-  console.log(pathname);
   // Fetch Side Navigation Path Name
   const sideNavTitle = fetchSideNavTitle(pathname);
 

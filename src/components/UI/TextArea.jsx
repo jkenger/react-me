@@ -3,7 +3,7 @@ import { useTheme } from "../context/ThemeContext";
 function TextArea({
   value = "",
   dark = "",
-  onChange = "",
+  onChange = null,
   disabled = false,
   placeholder = "",
 }) {

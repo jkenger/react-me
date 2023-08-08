@@ -2,11 +2,7 @@ import Badge from "../UI/Badge";
 
 function ContentHeader({ title, stacks = [] }) {
   const techStacks = stacks.length
-    ? stacks.map((stack) => (
-        <>
-          <Badge stack={stack} />
-        </>
-      ))
+    ? stacks.map((stack) => <Badge stack={stack} key={stack} />)
     : "";
 
   return (
