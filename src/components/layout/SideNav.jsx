@@ -14,7 +14,7 @@ function Sidenav({ path }) {
       <Sidebar>
         <SidebarList
           headTitle={"Projects"}
-          links={[{ title: "All Projects", to: "/" }]}
+          links={[{ title: "🔮 All Projects", to: "projects/all" }]}
           key={"Projects"}
         />
       </Sidebar>
@@ -30,10 +30,14 @@ function Sidenav({ path }) {
           headTitle={"Context API Projects"}
           key={"ASDSDX"}
           links={[
-            { title: "Theme Switcher", to: "context-api/theme-switcher" },
+            { title: "🔂 Theme Switcher", to: "context-api/theme-switcher" },
             {
-              title: "Language Translator",
+              title: "🔠 Language Translator",
               to: "context-api/language-translator",
+            },
+            {
+              title: "🧑 Account Profile",
+              to: "context-api/account-profile",
             },
           ]}
         />

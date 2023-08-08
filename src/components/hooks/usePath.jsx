@@ -6,12 +6,13 @@ function usePath() {
   // Note: This Function Only Removes "-"
   function fetchTopNavTitle(pathname) {
     // get the last path
-    const pname = pathname
+    let pname = pathname
       .slice(pathname.lastIndexOf("/"), pathname.length)
       .replace("/", "");
 
+    pname = !pname ? (pname = "All") : pname;
     // replace - to space
-    const subpname = pname.replace("-", " ");
+    const subpname = pname.includes("-") ? pname.replace("-", " ") : pname;
     // capitalize each word
     const subPath = toCapital(subpname);
     return subPath;
@@ -24,7 +25,7 @@ function usePath() {
   }
 
   const { pathname } = useLocation();
-
+  console.log(pathname);
   // Fetch Side Navigation Path Name
   const sideNavTitle = fetchSideNavTitle(pathname);
 
@@ -32,12 +33,11 @@ function usePath() {
   const topNavTitle = fetchTopNavTitle(pathname);
 
   // Return Nothing
-  if (!pathname || !topNavTitle || !sideNavTitle) return;
 
   const path = {
     pathName: pathname,
-    sideNavTitle: sideNavTitle,
-    topNavTitle: topNavTitle,
+    sideNavTitle: sideNavTitle ? sideNavTitle : "sideNavTitle",
+    topNavTitle: topNavTitle ? topNavTitle : "topNavTitle",
   };
   return path;
 }

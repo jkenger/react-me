@@ -6,11 +6,12 @@ import ContentHeader from "../../layout/ContentHeader";
 import Card from "../../UI/Card";
 import ContentFooter from "../../layout/ContentFooter";
 
-function ThemeSwitcher({ initialStacks }) {
+function ThemeSwitcher({ title, stacks }) {
   const { isDark, handleIsDark } = useTheme();
+  console.log(title, stacks);
   return (
     <React.Fragment>
-      <ContentHeader title="🔂 Theme Switcher" stacks={initialStacks} />
+      <ContentHeader title={title} stacks={stacks} />
       <Card className="flex items-center space-x-2 mb-4 text-sm">
         <Switch
           id="custom-switch-component"

@@ -7,9 +7,40 @@ import LanguageTranslator from "./components/pages/ContextPages/LanguageTranslat
 import AllProjects from "./components/pages/ProjectPages/AllProjects";
 import ContentPage from "./components/pages/ContentPage";
 import { TranslatorProvider } from "./components/context/TranslatorContext";
+import AccountProfile from "./components/pages/ContextPages/AccountProfile";
 
 function App() {
-  const initialStacks = ["React JS", "Context API", "Tailwind CSS"];
+  const contextApi = [
+    {
+      link: "theme-switcher",
+      element: (
+        <ThemeSwitcher
+          title={"🔂 Theme Switcher"}
+          stacks={["React JS", "Context API", "Tailwind CSS"]}
+        />
+      ),
+    },
+    {
+      link: "language-translator",
+      element: (
+        <TranslatorProvider>
+          <LanguageTranslator
+            title="🔠 Language Translator"
+            stacks={["React JS", "Context API", "Tailwind CSS"]}
+          />
+        </TranslatorProvider>
+      ),
+    },
+    {
+      link: "account-profile",
+      element: (
+        <AccountProfile
+          title="🧑 Account Profile"
+          stacks={["React JS", "Context API", "Tailwind CSS"]}
+        />
+      ),
+    },
+  ];
   return (
     <ThemeProvider>
       <BrowserRouter>
@@ -23,18 +54,10 @@ function App() {
               <Route />
             </Route>
             <Route path="context-api" element={<ContentPage />}>
-              <Route
-                path="theme-switcher"
-                element={<ThemeSwitcher initialStacks={initialStacks} />}
-              />
-              <Route
-                path="language-translator"
-                element={
-                  <TranslatorProvider>
-                    <LanguageTranslator initialStacks={initialStacks} />
-                  </TranslatorProvider>
-                }
-              />
+              {contextApi &&
+                contextApi.map((project) => (
+                  <Route path={project.link} element={project.element} />
+                ))}
             </Route>
           </Route>
           <Route path="*" element={<h1>404 Not Found</h1>} />

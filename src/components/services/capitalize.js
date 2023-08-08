@@ -1,4 +1,4 @@
-function toCapital(string) {
+function toCapital(string = "") {
   return string
     .toLowerCase()
     .split(" ")

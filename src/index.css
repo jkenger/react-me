@@ -17,3 +17,10 @@
 .card-dark svg {
   fill: white;
 }
+
+.active > span {
+  display: block;
+}
+.active {
+  @apply space-x-1;
+}
