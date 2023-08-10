@@ -8,7 +8,7 @@ function AccountProfile({ stacks, title }) {
   return (
     <React.Fragment>
       <ContentHeader title={title} stacks={stacks} />
-      <Card className="w-[300px] min-w-300px mx-auto">
+      <Card className="w-[300px] min-w-300px">
         <div>
           <div className="card-header mb-4">
             <h1>Account Profile</h1>

@@ -39,6 +39,10 @@ function Sidenav({ path }) {
               title: "🧑 Account Profile",
               to: "context-api/account-profile",
             },
+            {
+              title: "🛒 Shopping Cart",
+              to: "context-api/shopping-cart",
+            },
           ]}
         />
       </Sidebar>

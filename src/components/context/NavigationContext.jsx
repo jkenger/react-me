@@ -3,6 +3,8 @@ import ThemeSwitcher from "../pages/ContextPages/ThemeSwitcher";
 import LanguageTranslator from "../pages/ContextPages/LanguageTranslator";
 import { TranslatorProvider } from "./TranslatorContext";
 import AccountProfile from "../pages/ContextPages/AccountProfile";
+import ShoppingCart from "../pages/ContextPages/ShoppingCart";
+import { CartProvider } from "./CartContext";
 
 const NavigationContext = createContext();
 
@@ -40,6 +42,18 @@ function NavigationProvider({ children }) {
           stacks={["React JS", "Context API", "Tailwind CSS"]}
           name={name}
         />
+      ),
+    },
+    {
+      link: "shopping-cart",
+      element: (
+        <CartProvider>
+          <ShoppingCart
+            title="🛒 Shopping Cart"
+            stacks={["React JS", "Context API", "Tailwind CSS"]}
+            name={name}
+          />
+        </CartProvider>
       ),
     },
   ];
