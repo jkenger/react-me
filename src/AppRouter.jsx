@@ -15,7 +15,6 @@ function AppRouter() {
   const { contextApi } = useNavigation();
   return (
     <ThemeProvider>
-      <CartProvider>
         <BrowserRouter>
           <Routes>
             {/* INDEX WILL SET THE URL PATH to / BUT WITH NAVIGATE, 
@@ -43,7 +42,6 @@ function AppRouter() {
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
         </BrowserRouter>
-      </CartProvider>
     </ThemeProvider>
   );
 }
