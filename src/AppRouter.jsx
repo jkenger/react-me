@@ -9,35 +9,41 @@ import ContentPage from "./components/pages/ContentPage";
 import { TranslatorProvider } from "./components/context/TranslatorContext";
 import AccountProfile from "./components/pages/ContextPages/AccountProfile";
 import { useNavigation } from "./components/context/NavigationContext";
+import { CartProvider } from "./components/context/CartContext";
 
 function AppRouter() {
   const { contextApi } = useNavigation();
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <Routes>
-          {/* INDEX WILL SET THE URL PATH to / BUT WITH NAVIGATE, 
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* INDEX WILL SET THE URL PATH to / BUT WITH NAVIGATE, 
         ON RELOAD SET THE PATH TO THE PATH BELOW */}
-          <Route index element={<Navigate replace to="space/projects/all" />} />
-          <Route path="space" element={<Main />}>
-            <Route path="projects" element={<ContentPage />}>
-              <Route path="all" element={<AllProjects />} />
-              <Route />
+            <Route
+              index
+              element={<Navigate replace to="space/projects/all" />}
+            />
+            <Route path="space" element={<Main />}>
+              <Route path="projects" element={<ContentPage />}>
+                <Route path="all" element={<AllProjects />} />
+                <Route />
+              </Route>
+              <Route path="context-api" element={<ContentPage />}>
+                {contextApi &&
+                  contextApi.map((project) => (
+                    <Route
+                      path={project.link}
+                      element={project.element}
+                      key={project.link}
+                    />
+                  ))}
+              </Route>
             </Route>
-            <Route path="context-api" element={<ContentPage />}>
-              {contextApi &&
-                contextApi.map((project) => (
-                  <Route
-                    path={project.link}
-                    element={project.element}
-                    key={project.link}
-                  />
-                ))}
-            </Route>
-          </Route>
-          <Route path="*" element={<h1>404 Not Found</h1>} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="*" element={<h1>404 Not Found</h1>} />
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </ThemeProvider>
   );
 }
