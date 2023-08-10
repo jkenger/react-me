@@ -47,13 +47,11 @@ function NavigationProvider({ children }) {
     {
       link: "shopping-cart",
       element: (
-        <CartProvider>
-          <ShoppingCart
-            title="🛒 Shopping Cart"
-            stacks={["React JS", "Context API", "Tailwind CSS"]}
-            name={name}
-          />
-        </CartProvider>
+        <ShoppingCart
+          title="🛒 Shopping Cart"
+          stacks={["React JS", "Context API", "Redux", "Tailwind CSS"]}
+          name={name}
+        />
       ),
     },
   ];
