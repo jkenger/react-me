@@ -28,7 +28,9 @@ const inititalState = {
 };
 
 function cartReducer(state, action) {
-  const selected = state.cart.find((item) => item.id === action.payload);
+  const selected = state.cart.find(
+    (item) => item.id === action.payload || item.id === action.payload?.id
+  );
   switch (action.type) {
     case "cart/loaded":
       return {
@@ -41,15 +43,27 @@ function cartReducer(state, action) {
             };
           }),
         ],
+        selectedCart: selected,
       };
-    case "cart/addItem":
-      return { ...state, cart: [...state.cart, action.payload] };
-    case "cart/delete":
+    case "cart/add":
       return {
         ...state,
-        cart: [...state.cart.filter((item) => item.quantity > 0)],
+        cart: [
+          ...state.cart.map((item) =>
+            item.id === action.payload.id
+              ? {
+                  ...item,
+                  quantity: item.quantity + action.payload.quantity,
+                }
+              : item
+          ),
+          state.cart.some((item) => item.id === action.payload.id)
+            ? "null"
+            : action.payload,
+        ].filter((item) => item !== "null"),
+        selectedCart: selected,
       };
-    case "cart/decreaseQuantity":
+    case "cart/decq":
       return {
         ...state,
         cart: [
@@ -66,7 +80,7 @@ function cartReducer(state, action) {
         ],
         selectedCart: selected,
       };
-    case "cart/addQuantity":
+    case "cart/addq":
       return {
         ...state,
         cart: [
