@@ -2,12 +2,12 @@ import { useState } from "react";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 import { useTheme } from "../../context/ThemeContext";
-import { useNavigation } from "../../context/NavigationContext";
+import { useUser } from "../../context/UserContext";
 
 function AccountProfileForm() {
   const [accountName, setAccountName] = useState("");
   const { cardDark } = useTheme();
-  const { handleSetName } = useNavigation();
+  const { handleSetName } = useUser();
 
   function handleName(e) {
     setAccountName((accountName) => e.target.value);

@@ -8,13 +8,14 @@ import AllProjects from "./components/pages/ProjectPages/AllProjects";
 import ContentPage from "./components/pages/ContentPage";
 import { TranslatorProvider } from "./components/context/TranslatorContext";
 import AccountProfile from "./components/pages/ContextPages/AccountProfile";
-import { useNavigation } from "./components/context/NavigationContext";
+import { UserProvider, useNavigation } from "./components/context/UserContext";
 import { CartProvider } from "./components/context/CartContext";
+import ShoppingCart from "./components/pages/ContextPages/ShoppingCart";
 
 function AppRouter() {
-  const { contextApi } = useNavigation();
   return (
-    <ThemeProvider>
+    <UserProvider>
+      <ThemeProvider>
         <BrowserRouter>
           <Routes>
             {/* INDEX WILL SET THE URL PATH to / BUT WITH NAVIGATE, 
@@ -29,20 +30,58 @@ function AppRouter() {
                 <Route />
               </Route>
               <Route path="context-api" element={<ContentPage />}>
-                {contextApi &&
-                  contextApi.map((project) => (
-                    <Route
-                      path={project.link}
-                      element={project.element}
-                      key={project.link}
+                <Route
+                  path="theme-switcher"
+                  element={
+                    <ThemeSwitcher
+                      title={"🔂 Theme Switcher"}
+                      stacks={["React JS", "Context API", "Tailwind CSS"]}
                     />
-                  ))}
+                  }
+                />
+                <Route
+                  path="language-translator"
+                  element={
+                    <TranslatorProvider>
+                      <LanguageTranslator
+                        title="🔠 Language Translator"
+                        stacks={["React JS", "Context API", "Tailwind CSS"]}
+                      />
+                    </TranslatorProvider>
+                  }
+                />
+                <Route
+                  path="account-profile"
+                  element={
+                    <AccountProfile
+                      title="🧑 Account Profile"
+                      stacks={["React JS", "Context API", "Tailwind CSS"]}
+                    />
+                  }
+                />
+                <Route
+                  path="shopping-cart"
+                  element={
+                    <CartProvider>
+                      <ShoppingCart
+                        title="🛒 Shopping Cart"
+                        stacks={[
+                          "React JS",
+                          "Context API",
+                          "Redux",
+                          "Tailwind CSS",
+                        ]}
+                      />
+                    </CartProvider>
+                  }
+                />
               </Route>
             </Route>
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
         </BrowserRouter>
-    </ThemeProvider>
+      </ThemeProvider>
+    </UserProvider>
   );
 }
 

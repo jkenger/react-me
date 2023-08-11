@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import Card from "../UI/Card";
-import { useNavigation } from "../context/NavigationContext";
+import { useUser } from "../context/UserContext";
 import { useTheme } from "../context/ThemeContext";
 import { useState } from "react";
 
 function TopNav({ path }) {
   const { cardDark } = useTheme();
-  const { name } = useNavigation();
+  const { name } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div id="top-nav" className="z-20 w-full">
