@@ -9,60 +9,61 @@ import ContentPage from "./components/pages/ContentPage";
 import { TranslatorProvider } from "./components/context/TranslatorContext";
 import AccountProfile from "./components/pages/ContextPages/AccountProfile";
 import { UserProvider, useNavigation } from "./components/context/UserContext";
-import { CartProvider } from "./components/context/CartContext";
+
 import ShoppingCart from "./components/pages/ContextPages/ShoppingCart";
+import { CartProvider } from "./components/context/CartContext";
 
 function AppRouter() {
   return (
     <UserProvider>
-      <ThemeProvider>
-        <BrowserRouter>
-          <Routes>
-            {/* INDEX WILL SET THE URL PATH to / BUT WITH NAVIGATE, 
+      <CartProvider>
+        <ThemeProvider>
+          <BrowserRouter>
+            <Routes>
+              {/* INDEX WILL SET THE URL PATH to / BUT WITH NAVIGATE, 
         ON RELOAD SET THE PATH TO THE PATH BELOW */}
-            <Route
-              index
-              element={<Navigate replace to="space/projects/all" />}
-            />
-            <Route path="space" element={<Main />}>
-              <Route path="projects" element={<ContentPage />}>
-                <Route path="all" element={<AllProjects />} />
-                <Route />
-              </Route>
-              <Route path="context-api" element={<ContentPage />}>
-                <Route
-                  path="theme-switcher"
-                  element={
-                    <ThemeSwitcher
-                      title={"🔂 Theme Switcher"}
-                      stacks={["React JS", "Context API", "Tailwind CSS"]}
-                    />
-                  }
-                />
-                <Route
-                  path="language-translator"
-                  element={
-                    <TranslatorProvider>
-                      <LanguageTranslator
-                        title="🔠 Language Translator"
+              <Route
+                index
+                element={<Navigate replace to="space/projects/all" />}
+              />
+              <Route path="space" element={<Main />}>
+                <Route path="projects" element={<ContentPage />}>
+                  <Route path="all" element={<AllProjects />} />
+                  <Route />
+                </Route>
+                <Route path="context-api" element={<ContentPage />}>
+                  <Route
+                    path="theme-switcher"
+                    element={
+                      <ThemeSwitcher
+                        title={"🔂 Theme Switcher"}
                         stacks={["React JS", "Context API", "Tailwind CSS"]}
                       />
-                    </TranslatorProvider>
-                  }
-                />
-                <Route
-                  path="account-profile"
-                  element={
-                    <AccountProfile
-                      title="🧑 Account Profile"
-                      stacks={["React JS", "Context API", "Tailwind CSS"]}
-                    />
-                  }
-                />
-                <Route
-                  path="shopping-cart"
-                  element={
-                    <CartProvider>
+                    }
+                  />
+                  <Route
+                    path="language-translator"
+                    element={
+                      <TranslatorProvider>
+                        <LanguageTranslator
+                          title="🔠 Language Translator"
+                          stacks={["React JS", "Context API", "Tailwind CSS"]}
+                        />
+                      </TranslatorProvider>
+                    }
+                  />
+                  <Route
+                    path="account-profile"
+                    element={
+                      <AccountProfile
+                        title="🧑 Account Profile"
+                        stacks={["React JS", "Context API", "Tailwind CSS"]}
+                      />
+                    }
+                  />
+                  <Route
+                    path="shopping-cart"
+                    element={
                       <ShoppingCart
                         title="🛒 Shopping Cart"
                         stacks={[
@@ -72,15 +73,15 @@ function AppRouter() {
                           "Tailwind CSS",
                         ]}
                       />
-                    </CartProvider>
-                  }
-                />
+                    }
+                  />
+                </Route>
               </Route>
-            </Route>
-            <Route path="*" element={<h1>404 Not Found</h1>} />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
+              <Route path="*" element={<h1>404 Not Found</h1>} />
+            </Routes>
+          </BrowserRouter>
+        </ThemeProvider>
+      </CartProvider>
     </UserProvider>
   );
 }
