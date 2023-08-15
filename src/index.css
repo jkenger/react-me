@@ -40,3 +40,11 @@ select {
 .btn-primary {
   @apply border-green-500 bg-green-700 text-white hover:bg-green-500;
 }
+
+button:disabled {
+  @apply cursor-not-allowed;
+}
+
+input:disabled {
+  @apply bg-gray-100;
+}

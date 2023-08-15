@@ -16,6 +16,7 @@ import { ItemProvider } from "./components/context/ItemContext";
 import Notification from "./components/pages/ContextPages/Notification";
 import Content from "./components/pages/ContextPages/Content";
 import { Toaster } from "react-hot-toast";
+import AccountInformation from "./components/pages/ContextPages/AccountInformation";
 
 function AppRouter() {
   return (
@@ -116,7 +117,7 @@ function AppRouter() {
                             ]}
                           />
                           <Content.Body>
-                            <Notification />
+                            <AccountInformation />
                           </Content.Body>
                           <Content.Footer />
                         </Content>
