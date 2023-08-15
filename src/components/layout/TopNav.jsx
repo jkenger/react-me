@@ -5,7 +5,7 @@ import { useTheme } from "../context/ThemeContext";
 import { useState } from "react";
 
 function TopNav({ path }) {
-  const { cardDark } = useTheme();
+  const { cardDark, secondaryDark } = useTheme();
   const { name } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -27,7 +27,9 @@ function TopNav({ path }) {
           <div className=" profile-info flex space-x-1 hover:cursor-pointer">
             <h3>{!name ? "No name yet." : name}</h3>
             <span className="text-xs ">👇</span>
-            <div className="absolute flex flex-col items-center border w-36 right-12 top-12 px-4 py-2 border-gray-400 bg-gray-50">
+            <div
+              className={`absolute flex flex-col items-center border w-36 right-12 top-12 px-4 py-2 border-gray-400 bg-gray-50  ${secondaryDark}`}
+            >
               <Link
                 to="/space/context-api/account-profile"
                 className="text-xs text-center"
