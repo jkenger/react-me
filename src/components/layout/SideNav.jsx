@@ -43,6 +43,14 @@ function Sidenav({ path }) {
               title: "🛒 Shopping Cart",
               to: "context-api/shopping-cart",
             },
+            {
+              title: "🔔 Notifications",
+              to: "context-api/notifications",
+            },
+            {
+              title: "👤 Account Information",
+              to: "context-api/account-information",
+            },
           ]}
         />
       </Sidebar>

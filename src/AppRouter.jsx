@@ -13,6 +13,9 @@ import { UserProvider, useNavigation } from "./components/context/UserContext";
 import ShoppingCart from "./components/pages/ContextPages/ShoppingCart";
 import { CartProvider } from "./components/context/CartContext";
 import { ItemProvider } from "./components/context/ItemContext";
+import Notification from "./components/pages/ContextPages/Notification";
+import Content from "./components/pages/ContextPages/Content";
+import { Toaster } from "react-hot-toast";
 
 function AppRouter() {
   return (
@@ -77,11 +80,82 @@ function AppRouter() {
                         />
                       }
                     />
+                    <Route
+                      path="notifications"
+                      element={
+                        <Content>
+                          <Content.Header
+                            title="🔔 Notifications"
+                            stacks={[
+                              "React JS",
+                              "Compound Component Pattern",
+                              "Context API",
+                              "Tailwind CSS",
+                              "React Hot Toast",
+                            ]}
+                          />
+                          <Content.Body>
+                            <Notification />
+                          </Content.Body>
+                          <Content.Footer />
+                        </Content>
+                      }
+                    />
+                    <Route
+                      path="account-information"
+                      element={
+                        <Content>
+                          <Content.Header
+                            title="👤 Account Information"
+                            stacks={[
+                              "React JS",
+                              "Compound Component Pattern",
+                              "Context API",
+                              "Tailwind CSS",
+                              "React Hot Toast",
+                            ]}
+                          />
+                          <Content.Body>
+                            <Notification />
+                          </Content.Body>
+                          <Content.Footer />
+                        </Content>
+                      }
+                    />
                   </Route>
                 </Route>
                 <Route path="*" element={<h1>404 Not Found</h1>} />
               </Routes>
             </BrowserRouter>
+            <Toaster
+              position="top-right"
+              gutter={12}
+              containerStyle={{ margin: "8px" }}
+              toastOptions={{
+                success: {
+                  duration: 3000,
+                  iconTheme: {
+                    primary: "green",
+                    secondary: "black",
+                  },
+                },
+                error: {
+                  duration: 5000,
+                  iconTheme: {
+                    primary: "orange",
+                    secondary: "white",
+                  },
+                },
+
+                style: {
+                  fontSize: "14px",
+                  maxWidth: "500px",
+                  padding: "16px 24px",
+                  backgroundColor: "white",
+                  color: "black",
+                },
+              }}
+            />
           </ThemeProvider>
         </CartProvider>
       </ItemProvider>

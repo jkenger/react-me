@@ -58,7 +58,10 @@ function ShoppingCart({ stacks, title }) {
                         +
                       </Button>
                     </div>
-                    <Button onClick={() => handleAddItem(item.id)}>
+                    <Button
+                      onClick={() => handleAddItem(item.id)}
+                      className={"btn-primary"}
+                    >
                       Add to Cart
                     </Button>
                   </div>

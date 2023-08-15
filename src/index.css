@@ -21,8 +21,11 @@
 .active > span {
   display: block;
 }
+a:hover {
+  @apply text-green-800;
+}
 .active {
-  @apply space-x-1;
+  @apply space-x-1 text-green-800;
 }
 
 input,
@@ -30,7 +33,10 @@ select {
   @apply border border-gray-200 rounded-md p-2 w-full bg-gray-50;
 }
 
-
 .btn-submit {
   @apply bg-green-700;
+}
+
+.btn-primary {
+  @apply border-green-500 bg-green-700 text-white hover:bg-green-500;
 }
