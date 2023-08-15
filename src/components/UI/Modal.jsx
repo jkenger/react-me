@@ -7,10 +7,12 @@ const ModalContext = createContext();
 
 function Modal({ children }) {
   const [isOpen, setIsOpen] = useState(false);
+  console.log(isOpen);
 
   function handleOnOpen() {
     setIsOpen((isOpen) => !isOpen);
   }
+
   return (
     <ModalContext.Provider value={{ isOpen, handleOnOpen }}>
       {children}
@@ -53,20 +55,22 @@ function Button({ children }) {
 
 function Body({ children }) {
   const { secondaryDark } = useTheme();
-  const { isOpen } = useContext(ModalContext);
+  const { isOpen, handleOnOpen } = useContext(ModalContext);
 
   if (!isOpen) return;
 
   return createPortal(
-    <div
-      className={`absolute top-0 right-0 bg-gray-800 w-full h-full bg-opacity-75 z-20 transition-all duration-300 `}
-    >
+    <>
       <div
-        className={`fixed m-0 right-0 border shadow-lg border-l-gray-300 bg-gray-50 rounded-none w-full h-full transition-all duration-300 ease-in md:w-1/3 z-30 ${secondaryDark}`}
+        className={`absolute top-0 right-0 bg-gray-800 flex w-full h-full bg-opacity-75 z-20 transition-all duration-300 `}
+        onClick={handleOnOpen}
+      ></div>
+      <div
+        className={`absolute top-0 right-0 border shadow-lg border-l-gray-300 bg-gray-50 rounded-none w-full z-30 h-full transition-all duration-300 ease-in sm:w-1/2 md:w-1/3 ${secondaryDark}`}
       >
         {children}
       </div>
-    </div>,
+    </>,
     document.body
   );
 }
