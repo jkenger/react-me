@@ -9,7 +9,7 @@ function TopNav({ path }) {
   const { name } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div id="top-nav" className="z-20 w-full">
+    <div id="top-nav" className="z-10 w-full">
       <div
         className={`relative flex justify-between py-4 px-6 text-left border border-l-0 border-t-0 border-b-slate-200 border-r-slate-200 h-16 ${cardDark}`}
       >

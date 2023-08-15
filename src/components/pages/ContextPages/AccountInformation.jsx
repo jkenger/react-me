@@ -1,3 +1,5 @@
+import Modal from "../../UI/Modal";
+import AccountInformationAddModal from "./AccountInformationAddModal";
 import AccountInformationCard from "./AccountInformationCard";
 
 function AccountInformation() {
@@ -13,14 +15,14 @@ function AccountInformation() {
     {
       id: 2,
       avatar: "https://i.pravatar.cc/50?u=203",
-      name: "Ningning Ruo",
+      name: "Kay Ruo",
       age: "22",
       education: "College Graduate",
       course: "BS in Computer Science",
     },
   ];
   return (
-    <div className="flex  min-w-fit">
+    <div className="flex min-w-fit">
       <AccountInformationCard infos={FAKE_INFOS} />
     </div>
   );
