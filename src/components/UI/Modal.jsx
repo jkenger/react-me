@@ -30,8 +30,11 @@ function Header({ children, cardDark }) {
 
 function Form({ children }) {
   const { secondaryDark } = useTheme();
+  const { handleOnOpen } = useContext(ModalContext);
   return (
-    <div className={`px-4 py-6 border-y ${secondaryDark}`}>{children}</div>
+    <div className={`border-y ${secondaryDark}`}>
+      {cloneElement(children, { handleOnOpen })}
+    </div>
   );
 }
 

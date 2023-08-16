@@ -6,7 +6,9 @@ import Card from "../../UI/Card";
 const ContentContext = createContext();
 
 function Content({ children }) {
-  return <ContentContext.Provider>{children}</ContentContext.Provider>;
+  return (
+    <ContentContext.Provider value={"asd"}>{children}</ContentContext.Provider>
+  );
 }
 
 function Body({ children }) {

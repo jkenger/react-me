@@ -8,14 +8,18 @@ function AccountInformationAddModal() {
       <Modal.Body>
         <Modal.Header>➕ Add Account Information</Modal.Header>
         <Modal.Form>
-          <AccountInformationForm />
+          <AccountInformationForm>
+            <Modal.Footer>
+              <Button className=" border-gray-300 hover:bg-gray-200">
+                Cancel
+              </Button>
+              <Button className="btn-primary" submitOption="add">
+                Save
+              </Button>
+            </Modal.Footer>
+          </AccountInformationForm>
         </Modal.Form>
-        <Modal.Footer>
-          <Button className=" border-gray-300 hover:bg-gray-200">Cancel</Button>
-          <Button className="btn-primary">Save</Button>
-        </Modal.Footer>
       </Modal.Body>
-
       <Modal.Button>
         <Button className="btn-primary"> Add new account</Button>
       </Modal.Button>

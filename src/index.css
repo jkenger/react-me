@@ -114,7 +114,7 @@ button {
 
 select:disabled,
 input:disabled {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-grey-400);
   color: var(--color-grey-500);
 }
 

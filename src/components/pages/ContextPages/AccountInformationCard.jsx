@@ -5,17 +5,21 @@ import Table from "../../UI/Table";
 import TableRow from "../../UI/TableRow";
 import { useTheme } from "../../context/ThemeContext";
 import AccountInformationAddModal from "./AccountInformationAddModal";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import supabase from "./../../services/supabase";
 import { Spinner } from "../../UI/Spinner";
 import AccountInformationEditModal from "./AccountInformationEditModal";
+import AccountInformationDeleteModal from "./AccountInformationDeleteModal";
+import { toast } from "react-hot-toast";
+import { getAccounts } from "../../services/accountApi";
 
-async function getAccounts() {
-  let { data: Accounts, error } = await supabase.from("Accounts").select("*");
-  return { Accounts, error };
+async function deleteAccount(id) {
+  let { error } = await supabase.from("Accounts").delete().eq("id", id);
+  return error;
 }
 
 function AccountInformationCard() {
+  const queryClient = useQueryClient();
   const { secondaryDark, cardDark } = useTheme();
   const {
     data: accounts,
@@ -32,50 +36,82 @@ function AccountInformationCard() {
     },
   });
 
-  if (isLoading) return <Spinner />;
+  const { mutate, isLoading: isDeleting } = useMutation({
+    mutationFn: deleteAccount,
+    onSuccess: () => {
+      toast.success("Account successfully removed.");
+      queryClient.invalidateQueries({
+        queryKey: ["accounts"],
+      });
+    },
+    onError: (err) => {
+      toast.error(err.message);
+    },
+  });
+
+  // if (isLoading) return <Spinner />;
 
   return (
     <div className="flex flex-col w-full items-end space-y-4">
       <AccountInformationAddModal />
       <Table>
-        <TableRow styles={`uppercase ${secondaryDark}`}>
-          <th className=" w-1/2 py-4 text-start "></th>
-          <th className=" w-full py-4 text-start">Name</th>
-          <th className=" w-full py-4 text-start">Age</th>
-          <th className=" w-full py-4 text-start">Education</th>
-          <th className=" w-full py-4 text-start">Course</th>
-          <th className=" w-full py-4 text-start"></th>
-        </TableRow>
-
-        {accounts.Accounts.map((account) => (
-          <TableRow styles={`items-center bg-gray-100 ${cardDark}`}>
-            <td className="w-1/2 h-full flex justify-center items-center py-2">
-              <img
-                src={account.avatar}
-                alt={account.name}
-                className="rounded-full w-auto h-auto"
-              />
-            </td>
-            <td className="w-full ">{account.name}</td>
-            <td className="w-full ">{account.age}</td>
-            <td className="w-full ">{account.education}</td>
-            <td className="w-full ">{account.course}</td>
-            <td className="w-full flex space-x-2 text-xs text-black">
-              <button className="" disabled>
-                <FaPaste />
-              </button>
-              <AccountInformationEditModal>
-                <button>
-                  <FaPen />
-                </button>
-              </AccountInformationEditModal>
-
-              <button>
-                <FaTrash />
-              </button>
-            </td>
+        <thead>
+          <TableRow
+            styles={`uppercase bg-gray-100 border-b border-gray-100   ${secondaryDark}`}
+          >
+            <th className=" w-1/2 py-4 text-start "></th>
+            <th className=" w-full py-4 text-start">Name</th>
+            <th className=" w-full py-4 text-start">Age</th>
+            <th className=" w-full py-4 text-start">Education</th>
+            <th className=" w-full py-4 text-start">Course</th>
+            <th className=" w-full py-4 text-start"></th>
           </TableRow>
-        ))}
+        </thead>
+
+        <tbody>
+          {isLoading ? (
+            <TableRow>
+              <td className="w-full flex justify-center items-center h-32">
+                <Spinner />
+              </td>
+            </TableRow>
+          ) : (
+            accounts.Accounts.map((account) => (
+              <TableRow
+                key={account.id}
+                styles={`items-center border-b border-gray-100 hover:bg-gray-100 hover:dark:bg-gray-800 ${cardDark}`}
+              >
+                <td className="w-1/2 h-full flex justify-center items-center py-2">
+                  <img
+                    src={account.avatar}
+                    alt={account.name}
+                    className="rounded-full w-16 h-16 object-cover"
+                  />
+                </td>
+                <td className="w-full ">{account.name}</td>
+                <td className="w-full ">{account.age}</td>
+                <td className="w-full ">{account.education}</td>
+                <td className="w-full ">{account.course}</td>
+                <td className="w-full flex space-x-2 text-xs text-black">
+                  <button className="" disabled>
+                    <FaPaste />
+                  </button>
+                  <AccountInformationEditModal account={account}>
+                    <button>
+                      <FaPen />
+                    </button>
+                  </AccountInformationEditModal>
+                  <button
+                    onClick={() => mutate(account.id)}
+                    disabled={isDeleting}
+                  >
+                    <FaTrash />
+                  </button>
+                </td>
+              </TableRow>
+            ))
+          )}
+        </tbody>
       </Table>
     </div>
   );

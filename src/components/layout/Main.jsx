@@ -12,7 +12,7 @@ function Main({ children }) {
       {/* SIDEBAR */}
       <SideNav path={path} />
       {/* NAV AND MAIN CONTENT */}
-      <div className="flex flex-col w-full ">
+      <div className="flex flex-col w-full h-full">
         <TopNav path={path} />
         <Outlet />
         {children}

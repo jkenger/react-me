@@ -149,21 +149,6 @@ function AppRouter() {
                 gutter={12}
                 containerStyle={{ margin: "8px" }}
                 toastOptions={{
-                  success: {
-                    duration: 3000,
-                    iconTheme: {
-                      primary: "green",
-                      secondary: "black",
-                    },
-                  },
-                  error: {
-                    duration: 5000,
-                    iconTheme: {
-                      primary: "orange",
-                      secondary: "white",
-                    },
-                  },
-
                   style: {
                     fontSize: "14px",
                     maxWidth: "500px",

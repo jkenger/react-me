@@ -1,20 +1,11 @@
 import { useTheme } from "../context/ThemeContext";
+import tw from "twin.macro";
+import { styled } from "styled-components";
 
-function Input({
-  type = "",
-  className = "",
-  onChange = null,
-  disabled = false,
-}) {
-  const { cardDark } = useTheme();
-  return (
-    <input
-      type={type}
-      disabled={disabled}
-      className={`${cardDark} focus:shadow-sm transition-all duration-100 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:border-gray-300 ${className}`}
-      onChange={onChange}
-    />
-  );
-}
+const Input = styled.input`
+  ${({ className }) => tw`${className}`}
+  ${(props) => props.disabled && tw`bg-gray-300`}
+  ${tw`dark:bg-gray-900 dark:text-white dark:border-gray-700 bg-gray-100 border-gray-300 focus:shadow-sm transition-all duration-100 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:border-gray-300`}
+`;
 
 export default Input;
