@@ -117,7 +117,7 @@ function AccountInformationCard() {
                     </button>
                   </AccountInformationEditModal>
                   <button
-                    onClick={() => mutateDelete(account.id)}
+                    onClick={() => mutateDelete(account)}
                     disabled={isDeleting}
                   >
                     <FaTrash />

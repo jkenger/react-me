@@ -77,7 +77,7 @@ function AccountInformationForm({ children, handleOnOpen, account }) {
                 required: "This field is required.",
               })}
               className="disabled:bg-gray-200"
-              disabled={isCreating}
+              disabled={isCreating || isUpdating}
             ></Input>
             <div className="mt-2">
               <span className="text-red-800">{errors.name?.message}</span>
@@ -97,7 +97,7 @@ function AccountInformationForm({ children, handleOnOpen, account }) {
               {...register("age", {
                 required: "This field is required.",
               })}
-              disabled={isCreating}
+              disabled={isCreating || isUpdating}
             ></Input>
             <div className="mt-2">
               <span className="text-red-800">{errors.age?.message}</span>
@@ -117,7 +117,7 @@ function AccountInformationForm({ children, handleOnOpen, account }) {
               {...register("education", {
                 required: "This field is required.",
               })}
-              disabled={isCreating}
+              disabled={isCreating || isUpdating}
             ></Input>
             <div className="mt-2">
               <span className="text-red-800">{errors.education?.message}</span>
@@ -137,7 +137,7 @@ function AccountInformationForm({ children, handleOnOpen, account }) {
               {...register("course", {
                 required: "This field is required.",
               })}
-              disabled={isCreating}
+              disabled={isCreating || isUpdating}
             ></Input>
             <div className="mt-2">
               <span className="text-red-800">{errors.course?.message}</span>
@@ -154,7 +154,7 @@ function AccountInformationForm({ children, handleOnOpen, account }) {
               id="avatar"
               className="disabled:bg-gray-200"
               {...register("avatar")}
-              disabled={isCreating}
+              disabled={isCreating || isUpdating}
             ></Input>
           </div>
         </div>
