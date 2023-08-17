@@ -229,11 +229,11 @@ select {
 }
 
 .btn-submit {
-  @apply bg-green-700;
+  @apply bg-green-700 disabled:cursor-not-allowed disabled:bg-green-700;
 }
 
 .btn-primary {
-  @apply border-green-500 bg-green-700 text-white hover:bg-green-500;
+  @apply border-green-500 bg-green-700 text-white hover:bg-green-500 disabled:cursor-not-allowed disabled:bg-green-700;
 }
 
 button:disabled {

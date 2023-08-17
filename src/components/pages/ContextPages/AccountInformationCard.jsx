@@ -11,12 +11,11 @@ import { Spinner } from "../../UI/Spinner";
 import AccountInformationEditModal from "./AccountInformationEditModal";
 import AccountInformationDeleteModal from "./AccountInformationDeleteModal";
 import { toast } from "react-hot-toast";
-import { getAccounts } from "../../services/accountApi";
-
-async function deleteAccount(id) {
-  let { error } = await supabase.from("Accounts").delete().eq("id", id);
-  return error;
-}
+import {
+  deleteAccount,
+  duplicateAccount,
+  getAccounts,
+} from "../../services/accountApi";
 
 function AccountInformationCard() {
   const queryClient = useQueryClient();
@@ -36,25 +35,7 @@ function AccountInformationCard() {
     },
   });
 
-  async function duplicateAccount(data) {
-    const { data: account, error } = await supabase
-      .from("Accounts")
-      .insert([
-        {
-          name: `Copy of ${data.name}`,
-          age: data.age,
-          education: data.education,
-          course: data.course,
-          avatar: data.avatar,
-        },
-      ])
-      .select();
-
-    console.log(error);
-    return { error, account };
-  }
-
-  const { mutate, isLoading: isDeleting } = useMutation({
+  const { mutate: mutateDelete, isLoading: isDeleting } = useMutation({
     mutationFn: deleteAccount,
     onSuccess: () => {
       toast.success("Account successfully removed.");
@@ -136,7 +117,7 @@ function AccountInformationCard() {
                     </button>
                   </AccountInformationEditModal>
                   <button
-                    onClick={() => mutate(account.id)}
+                    onClick={() => mutateDelete(account.id)}
                     disabled={isDeleting}
                   >
                     <FaTrash />
