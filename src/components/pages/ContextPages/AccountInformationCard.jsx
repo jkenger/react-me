@@ -36,10 +36,41 @@ function AccountInformationCard() {
     },
   });
 
+  async function duplicateAccount(data) {
+    const { data: account, error } = await supabase
+      .from("Accounts")
+      .insert([
+        {
+          name: `Copy of ${data.name}`,
+          age: data.age,
+          education: data.education,
+          course: data.course,
+          avatar: data.avatar,
+        },
+      ])
+      .select();
+
+    console.log(error);
+    return { error, account };
+  }
+
   const { mutate, isLoading: isDeleting } = useMutation({
     mutationFn: deleteAccount,
     onSuccess: () => {
       toast.success("Account successfully removed.");
+      queryClient.invalidateQueries({
+        queryKey: ["accounts"],
+      });
+    },
+    onError: (err) => {
+      toast.error(err.message);
+    },
+  });
+
+  const { mutate: mutateDuplicate, isLoading: isDuplicating } = useMutation({
+    mutationFn: duplicateAccount,
+    onSuccess: () => {
+      toast.success("Account successfully duplicated.");
       queryClient.invalidateQueries({
         queryKey: ["accounts"],
       });
@@ -93,7 +124,10 @@ function AccountInformationCard() {
                 <td className="w-full ">{account.education}</td>
                 <td className="w-full ">{account.course}</td>
                 <td className="w-full flex space-x-2 text-xs text-black">
-                  <button className="" disabled>
+                  <button
+                    onClick={() => mutateDuplicate(account)}
+                    disabled={isDuplicating}
+                  >
                     <FaPaste />
                   </button>
                   <AccountInformationEditModal account={account}>

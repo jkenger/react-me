@@ -15,28 +15,33 @@ function AccountInformationForm({ children, handleOnOpen, account }) {
   if (account) editSession = "edit";
 
   async function createAccount(data) {
-    const imageName = `${Math.random()}-${data.avatar[0].name}`.replaceAll(
+    const imageName = `${Math.random()}-${data.avatar[0]?.name}`.replaceAll(
       ["/", " "],
       ""
     );
 
     const imagePath = `${supabaseUrl}/storage/v1/object/public/avatars/${imageName}`;
+
     const { data: account, error } = await supabase
       .from("Accounts")
       .insert([{ ...data, avatar: imagePath }])
       .select();
+    console.log(error);
 
-    console.log(data.avatar[0]);
-    const { error: storageError } = await supabase.storage
-      .from("avatars")
-      .upload(imageName, data.avatar[0]);
-    if (storageError) {
-      const { error } = await supabase
-        .from("Accounts")
-        .delete()
-        .eq("id", account[0].id);
-      console.error(error);
-      throw new Error("Account could not be created and could not be uploaded");
+    if (imageName) {
+      const { error: storageError } = await supabase.storage
+        .from("avatars")
+        .upload(imageName, data.avatar[0]);
+      if (storageError) {
+        const { error } = await supabase
+          .from("Accounts")
+          .delete()
+          .eq("id", account[0].id);
+        console.error(error);
+        throw new Error(
+          "Account could not be created and could not be uploaded"
+        );
+      }
     }
 
     if (error) console.log(error);
