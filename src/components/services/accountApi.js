@@ -36,7 +36,6 @@ export async function createAccount(data) {
     .from("Accounts")
     .insert([{ ...data, avatar: imagePath, avatar_name: imageName }])
     .select();
-  console.log(error);
 
   if (imageName) {
     await uploadImage(data.avatar[0], account[0].id, imageName);

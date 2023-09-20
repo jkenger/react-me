@@ -15,7 +15,6 @@ function AccountInformationForm({ children, handleOnOpen, account }) {
   const { register, handleSubmit, formState } = useForm();
 
   const { errors } = formState;
-  console.log(errors);
 
   let editSession = "";
   // If account is not null, session is editing mode.

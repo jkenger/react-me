@@ -27,12 +27,6 @@ function AccountInformationCard() {
   } = useQuery({
     queryKey: ["accounts"],
     queryFn: getAccounts,
-    onSuccess: () => {
-      console.log("fetch successfully");
-    },
-    onError: () => {
-      console.log("fetch error");
-    },
   });
 
   const { mutate: mutateDelete, isLoading: isDeleting } = useMutation({
